@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="/static/output.css" rel="stylesheet" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.6"
+      integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+      crossorigin="anonymous"
+    ></script>
+    <title>Upload Image</title>
+  </head>
+
+  <body class="bg-gray-100 font-sans">
+    <div class="bg-blue-500 p-4">
+      <nav class="flex justify-between items-center text-white">
+        <a href="/admin" class="hover:text-gray-300 px-3">Admin</a>
+        <a href="/find" class="hover:text-gray-300 px-3">Find</a>
+      </nav>
+    </div>
+    <div class="mx-6">
+      <h1 class="text-3xl text-gray-700 my-5">
+        Upload png/jpg images (<a
+          href="https://convertio.co/"
+          class="text-blue-500 hover:text-blue-700 hover:underline"
+          >converter</a
+        >)
+      </h1>
+      <form
+        hx-post=" /upload"
+        hx-target="#result"
+        hx-indicator="#loader"
+        enctype="multipart/form-data"
+        class="bg-white m-4 p-4 border border-gray-300 rounded shadow-md"
+      >
+        <input
+          type="file"
+          accept="image/png, image/jpeg"
+          name="files[]"
+          multiple="multiple"
+          class="w-full my-4"
+        />
+        <input
+          type="submit"
+          value="Upload"
+          class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
+        />
+      </form>
+
+      <div
+        id="result"
+        class="bg-white m-4 p-4 border border-gray-300 rounded shadow-md"
+      >
+        <img
+          id="loader"
+          class="htmx-indicator"
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpowerusers.microsoft.com%2Ft5%2Fimage%2Fserverpage%2Fimage-id%2F118082i204C32E01666789C%2Fimage-size%2Flarge%3Fv%3D1.0%26px%3D999&f=1&nofb=1&ipt=7c8c14e94aa47f8a936ec0b9f62cbbfa0dfa668ff9dc8b346755caf2eff4bc68&ipo=images"
+        />
+      </div>
+    </div>
+  </body>
+</html>
